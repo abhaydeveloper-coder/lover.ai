@@ -18,61 +18,58 @@ Sweeta Ka Sweetu`;
 export const LoveLetterSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const typingRef = useRef(null);
 
   useEffect(() => {
-    if (isOpen && !isTyping) {
-      setIsTyping(true);
-      let index = 0;
-      
-      const typeWriter = () => {
-        if (index < letterText.length) {
-          setDisplayedText(letterText.substring(0, index + 1));
-          index++;
-          typingRef.current = setTimeout(typeWriter, 30);
-        } else {
-          setIsTyping(false);
-        }
-      };
+    if (!isOpen) return;
 
-      typeWriter();
+    let index = 0;
 
-      return () => {
-        if (typingRef.current) {
-          clearTimeout(typingRef.current);
-        }
-      };
-    }
-  }, [isOpen, isTyping]);
+    const typeWriter = () => {
+      if (index < letterText.length) {
+        setDisplayedText(letterText.slice(0, index + 1));
+        index++;
+        typingRef.current = setTimeout(typeWriter, 25);
+      }
+    };
+
+    typeWriter();
+
+    return () => clearTimeout(typingRef.current);
+  }, [isOpen]);
 
   const handleOpenLetter = () => {
+    setDisplayedText(''); // reset text before typing
     setIsOpen(true);
   };
 
   return (
     <section className="letter-section">
       <div className="section-container">
-        <h2 className="section-title">Unfolding <span className="text-accent">Us</span></h2>
-        <p className="section-subtitle">A letter sealed with love — click to open</p>
-        
+        <h2 className="section-title">
+          Unfolding <span className="text-accent">Us</span>
+        </h2>
+        <p className="section-subtitle">
+          A letter sealed with love — click to open
+        </p>
+
         <div className={`envelope-container ${isOpen ? 'opened' : ''}`}>
           {!isOpen ? (
             <div className="envelope" onClick={handleOpenLetter}>
               <div className="envelope-flap"></div>
               <div className="envelope-body">
-                <span style={{ fontSize: '48px', color: 'var(--rose)' }}>💌</span>
+                <span style={{ fontSize: '48px', color: 'var(--rose)' }}>
+                  💌
+                </span>
                 <p className="envelope-text">click to break the seal</p>
               </div>
-              <div className="wax-seal">
-                💌
-              </div>
+              <div className="wax-seal">💌</div>
             </div>
           ) : (
             <div className="letter-paper">
               <div className="letter-content">
                 <pre className="letter-text">{displayedText}</pre>
-                {isTyping && <span className="typing-cursor">|</span>}
+                <span className="typing-cursor">|</span>
               </div>
             </div>
           )}
