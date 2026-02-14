@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail } from 'lucide-react';
 
 const letterText = `My love,
 
@@ -45,7 +44,7 @@ export const LoveLetterSection = () => {
         }
       };
     }
-  }, [isOpen]);
+  }, [isOpen, isTyping]);
 
   const handleOpenLetter = () => {
     setIsOpen(true);
@@ -54,18 +53,19 @@ export const LoveLetterSection = () => {
   return (
     <section className="letter-section">
       <div className="section-container">
-        <h2 className="section-title">A Letter From My Heart</h2>
+        <h2 className="section-title">Unfolding <span className="text-accent">Us</span></h2>
+        <p className="section-subtitle">A letter sealed with love — click to open</p>
         
         <div className={`envelope-container ${isOpen ? 'opened' : ''}`}>
           {!isOpen ? (
             <div className="envelope" onClick={handleOpenLetter}>
               <div className="envelope-flap"></div>
               <div className="envelope-body">
-                <Mail size={48} className="envelope-icon" />
-                <p className="envelope-text">Click to open</p>
+                <span style={{ fontSize: '48px', color: 'var(--rose)' }}>💌</span>
+                <p className="envelope-text">click to break the seal</p>
               </div>
               <div className="wax-seal">
-                <Heart size={24} />
+                💌
               </div>
             </div>
           ) : (
@@ -79,21 +79,6 @@ export const LoveLetterSection = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-// Import Heart from lucide-react at the top with Mail
-const Heart = ({ size }) => {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      stroke="none"
-    >
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
   );
 };
 
