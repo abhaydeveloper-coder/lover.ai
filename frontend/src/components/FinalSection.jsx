@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Heart, Sparkles } from 'lucide-react';
 
 export const FinalSection = () => {
   const [showSurprise, setShowSurprise] = useState(false);
@@ -10,7 +9,7 @@ export const FinalSection = () => {
   };
 
   const createConfetti = () => {
-    const colors = ['#FF4D6D', '#FFC0CB', '#C8A2C8', '#FF69B4', '#FFB6C1'];
+    const colors = ['#FFB5C5', '#FF6B9D', '#E8B4BC', '#FFC0CB', '#FFE5EC'];
     const container = document.querySelector('.final-section');
     if (!container) return;
 
@@ -30,42 +29,43 @@ export const FinalSection = () => {
   return (
     <section className="final-section">
       <div className="floating-hearts-intense">
-        {[...Array(20)].map((_, i) => (
-          <Heart
+        {[...Array(15)].map((_, i) => (
+          <span
             key={i}
             className="floating-heart"
-            size={Math.random() * 30 + 20}
             style={{
               left: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 5 + 5}s`,
-              opacity: Math.random() * 0.6 + 0.3
+              animationDuration: `${Math.random() * 5 + 10}s`,
+              fontSize: `${Math.random() * 10 + 20}px`
             }}
-          />
+          >
+            ♥
+          </span>
         ))}
       </div>
 
       <div className="section-container final-content">
         <div className="final-message">
-          <Sparkles className="sparkle-accent" size={48} />
+          <span className="sparkle-accent" style={{ fontSize: '48px' }}>✨</span>
           <h1 className="final-headline">
             I choose you, Avni.
           </h1>
           <h2 className="final-subheadline">
             Today. Tomorrow. Always.
           </h2>
-          <Sparkles className="sparkle-accent" size={48} />
+          <span className="sparkle-accent" style={{ fontSize: '48px' }}>✨</span>
         </div>
 
         {!showSurprise ? (
           <button className="surprise-button" onClick={handleSurpriseClick}>
-            <Heart className="button-heart" size={24} />
+            <span className="button-heart">💕</span>
             Click for a Surprise
           </button>
         ) : (
           <div className="surprise-reveal">
             <div className="surprise-box">
-              <Heart className="surprise-heart pulse-heart" size={64} />
+              <div className="surprise-heart pulse-heart">💕</div>
               <h2 className="surprise-question">
                 Will you be my Valentine forever, Avni?
               </h2>

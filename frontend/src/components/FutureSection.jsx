@@ -1,12 +1,11 @@
 import React from 'react';
-import { Heart, Calendar, Infinity } from 'lucide-react';
 
 export const FutureSection = () => {
   const timeline = [
-    { icon: Calendar, label: 'First Met', date: 'October 31, 2025', color: '#FF4D6D' },
-    { icon: Heart, label: 'First Date', date: 'November 3, 2025', color: '#FFC0CB' },
-    { icon: Calendar, label: 'Today', date: 'Right Now', color: '#C8A2C8' },
-    { icon: Infinity, label: 'Forever', date: 'Together Always', color: '#FF69B4' }
+    { emoji: '📅', label: 'First Met', date: 'October 31, 2025', color: '#FF6B9D' },
+    { emoji: '💕', label: 'First Date', date: 'November 3, 2025', color: '#FFB5C5' },
+    { emoji: '📅', label: 'Today', date: 'Right Now', color: '#E8B4BC' },
+    { emoji: '♾️', label: 'Forever', date: 'Together Always', color: '#FF6B9D' }
   ];
 
   return (
@@ -27,7 +26,7 @@ export const FutureSection = () => {
       </div>
 
       <div className="section-container">
-        <h2 className="section-title">Our Forever, Avni</h2>
+        <h2 className="section-title">Our <span className="text-accent">Forever,</span> Avni</h2>
         
         <p className="future-message">
           From the moment we met, I knew you were special. Every day with you feels like a gift,
@@ -36,26 +35,23 @@ export const FutureSection = () => {
         </p>
 
         <div className="timeline-container">
-          {timeline.map((item, index) => {
-            const IconComponent = item.icon;
-            return (
-              <div key={index} className="timeline-item">
-                <div
-                  className="timeline-icon"
-                  style={{ backgroundColor: item.color }}
-                >
-                  <IconComponent size={28} />
-                </div>
-                <div className="timeline-content">
-                  <h3 className="timeline-label">{item.label}</h3>
-                  <p className="timeline-date">{item.date}</p>
-                </div>
-                {index < timeline.length - 1 && (
-                  <div className="timeline-connector" />
-                )}
+          {timeline.map((item, index) => (
+            <div key={index} className="timeline-item">
+              <div
+                className="timeline-icon"
+                style={{ backgroundColor: item.color }}
+              >
+                <span style={{ fontSize: '24px' }}>{item.emoji}</span>
               </div>
-            );
-          })}
+              <div className="timeline-content">
+                <h3 className="timeline-label">{item.label}</h3>
+                <p className="timeline-date">{item.date}</p>
+              </div>
+              {index < timeline.length - 1 && (
+                <div className="timeline-connector" />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

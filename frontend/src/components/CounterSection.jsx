@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sparkles } from 'lucide-react';
 
 export const CounterSection = () => {
   const [count, setCount] = useState(0);
@@ -17,13 +16,14 @@ export const CounterSection = () => {
       { threshold: 0.5 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [hasStarted]);
@@ -50,9 +50,9 @@ export const CounterSection = () => {
     <section ref={sectionRef} className="counter-section">
       <div className="section-container">
         <div className="counter-content">
-          <Sparkles className="sparkle-icon sparkle-1" size={32} />
-          <Sparkles className="sparkle-icon sparkle-2" size={24} />
-          <Sparkles className="sparkle-icon sparkle-3" size={28} />
+          <span className="sparkle-icon sparkle-1" style={{ fontSize: '32px' }}>✨</span>
+          <span className="sparkle-icon sparkle-2" style={{ fontSize: '24px' }}>✨</span>
+          <span className="sparkle-icon sparkle-3" style={{ fontSize: '28px' }}>✨</span>
           
           <h2 className="counter-title">Reasons I Love You</h2>
           
