@@ -1,14 +1,18 @@
-/* Root Variables */
+/* Root Variables - Elegant Aesthetic */
 :root {
-  --pink-blush: #FFC0CB;
-  --soft-red: #FF4D6D;
-  --lavender: #C8A2C8;
-  --hot-pink: #FF69B4;
-  --light-pink: #FFB6C1;
-  --dark-bg: #1a0a1e;
-  --dark-purple: #2d1b3d;
-  --text-dark: #1e1919;
-  --text-light: #ffffff;
+  --cream: #FAF7F2;
+  --light-cream: #FFF9F0;
+  --soft-pink: #FFB5C5;
+  --rose: #FF6B9D;
+  --burgundy: #4A2C2A;
+  --dark-brown: #3E2723;
+  --muted-pink: #E8B4BC;
+  --accent-pink: #FFE5EC;
+  --dark-bg: #2C1810;
+  --dark-cream: #F5EDE0;
+  --text-dark: #3E2723;
+  --text-muted: #8B7355;
+  --text-light: #FAF7F2;
 }
 
 * {
@@ -18,15 +22,16 @@
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow-x: hidden;
-  background: linear-gradient(135deg, var(--pink-blush) 0%, var(--lavender) 100%);
+  background: var(--cream);
   color: var(--text-dark);
   transition: background 0.5s ease, color 0.5s ease;
+  line-height: 1.6;
 }
 
 body.dark-mode {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-purple) 100%);
+  background: var(--dark-bg);
   color: var(--text-light);
 }
 
