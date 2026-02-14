@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Clock, MessageCircle } from 'lucide-react';
 
 const openWhenMessages = {
   miss: "Hey beautiful, I miss you too. Close your eyes and imagine me right there with you, holding you close. You're always in my heart, no matter the distance. I love you, Avni. 💕",
@@ -84,37 +83,12 @@ export const InteractiveSection = () => {
   return (
     <section className="interactive-section">
       <div className="section-container">
-        <h2 className="section-title">Just For You, Avni</h2>
-
-        {/* Countdown Timer */}
-        <div className="countdown-container">
-          <div className="countdown-header">
-            <Clock size={32} />
-            <h3>Until Our Next Anniversary</h3>
-          </div>
-          <div className="countdown-display">
-            <div className="countdown-item">
-              <span className="countdown-number">{countdown.days}</span>
-              <span className="countdown-label">Days</span>
-            </div>
-            <div className="countdown-item">
-              <span className="countdown-number">{countdown.hours}</span>
-              <span className="countdown-label">Hours</span>
-            </div>
-            <div className="countdown-item">
-              <span className="countdown-number">{countdown.minutes}</span>
-              <span className="countdown-label">Minutes</span>
-            </div>
-            <div className="countdown-item">
-              <span className="countdown-number">{countdown.seconds}</span>
-              <span className="countdown-label">Seconds</span>
-            </div>
-          </div>
-        </div>
+        <h2 className="section-title">Just <span className="text-accent">Us</span></h2>
+        <p className="section-subtitle">A little playground for our love</p>
 
         {/* Do You Love Me Game */}
         <div className="love-game-container">
-          <h3 className="game-title">Do You Love Me?</h3>
+          <h3 className="game-title">Do you love me?</h3>
           <div className="game-buttons">
             {[...Array(yesButtons)].map((_, index) => (
               <button
@@ -123,7 +97,7 @@ export const InteractiveSection = () => {
                 onClick={handleYesClick}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                Yes! ❤️
+                Yes! 💕
               </button>
             ))}
             <button
@@ -140,36 +114,63 @@ export const InteractiveSection = () => {
           </div>
           {showLoveMessage && (
             <div className="love-message">
-              <Heart className="pulse-heart" size={48} />
-              <p>I love you more, Avni! ❤️</p>
+              <div className="pulse-heart">💕</div>
+              <p>I love you more, Avni!</p>
             </div>
           )}
+        </div>
+
+        {/* Countdown Timer */}
+        <div className="countdown-container">
+          <div className="countdown-header">
+            <span style={{ fontSize: '32px' }}>⏰</span>
+            <h3>Next Valentine's Day</h3>
+          </div>
+          <div className="countdown-display">
+            <div className="countdown-item">
+              <span className="countdown-number">{countdown.days}</span>
+              <span className="countdown-label">Days</span>
+            </div>
+            <div className="countdown-item">
+              <span className="countdown-number">{countdown.hours}</span>
+              <span className="countdown-label">Hours</span>
+            </div>
+            <div className="countdown-item">
+              <span className="countdown-number">{countdown.minutes}</span>
+              <span className="countdown-label">Min</span>
+            </div>
+            <div className="countdown-item">
+              <span className="countdown-number">{countdown.seconds}</span>
+              <span className="countdown-label">Sec</span>
+            </div>
+          </div>
         </div>
 
         {/* Open When Buttons */}
         <div className="open-when-container">
           <h3 className="open-when-title">
-            <MessageCircle size={28} />
-            Open When You Need...
+            <span style={{ fontSize: '28px' }}>📦</span>
+            <span>Open When...</span>
           </h3>
+          <p className="section-subtitle" style={{ marginBottom: '24px' }}>Your digital keepsake box</p>
           <div className="open-when-buttons">
             <button
               className="open-when-button"
               onClick={() => handleOpenWhen('miss')}
             >
-              When you miss me
+              💭 Open when you miss me
             </button>
             <button
               className="open-when-button"
               onClick={() => handleOpenWhen('sad')}
             >
-              When you're sad
+              🥺 Open when you're sad
             </button>
             <button
               className="open-when-button"
               onClick={() => handleOpenWhen('honesty')}
             >
-              When you need honesty
+              💌 Open when you just need to know
             </button>
           </div>
 
